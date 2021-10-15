@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    />
+    <title>Responsive-Website</title>
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo">logo</a>
+
+      <div class="navigation">
+        <ul class="menu">
+          <div class="close-btn"></div>
+
+          <li class="menu-item"><a href="#">Home</a></li>
+          <li class="menu-item">
+            <a href="#">Dropdown <i class="fas fa-angle-down"></i></a>
+            <ul class="sub-menu">
+              <li class="sub-item"><a href="#">Sub Item 01</a></li>
+              <li class="sub-item"><a href="#">Sub Item 02</a></li>
+              <li class="sub-item"><a href="#">Sub Item 03</a></li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="#">With Sub-dropdown <i class="fas fa-angle-down"></i></a>
+            <ul class="sub-menu">
+              <li class="sub-item"><a href="#">Sub Item 01</a></li>
+              <li class="sub-item"><a href="#">Sub Item 02</a></li>
+              <li class="sub-item"><a href="#">Sub Item 03</a></li>
+              <li class="sub-item"><a href="#">Sub Item 04</a></li>
+              <li class="sub-item more">
+                <a href="#">More Item <i class="fas fa-angle-right"></i></a>
+                <ul class="more-menu">
+                  <li class="more-item"><a href="#">More Item 01</a></li>
+                  <li class="more-item"><a href="#">More Item 02</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="menu-item"><a href="#">Services</a></li>
+          <li class="menu-item"><a href="#">About</a></li>
+          <li class="menu-item"><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="menu-btn"></div>
+    </header>
+
+    <section></section>
+  </body>
+  <script>
+    const menuItems = document.querySelectorAll(".menu-item a");
+    const moreItem = document.querySelector(".more a");
+
+    function controlMenuItem(event) {
+      const subItem = event.target.nextElementSibling;
+
+      if (subItem && subItem.classList.contains("active")) {
+        subItem.classList.remove("active");
+        subItem.style.maxHeight = "0";
+      } else if (subItem && !subItem.classList.contains("active")) {
+        subItem.classList.add("active");
+        subItem.style.maxHeight = "500px";
+      }
+    }
+
+    function controlMoreItem() {
+      if (moreItem.classList.contains("active")) {
+        moreItem.classList.remove("active");
+        moreItem.style.maxHeight = "0";
+      } else {
+        moreItem.classList.add("active");
+        moreItem.style.maxHeight = "500px";
+      }
+    }
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 1060) {
+        menuItems.forEach((menuItem) => {
+          const subItem = menuItem.nextElementSibling;
+
+          menuItem.removeEventListener("click", controlMenuItem);
+
+          if (subItem) {
+            subItem.removeAttribute("style");
+            subItem.classList.remove("active");
+          }
+        });
+
+        moreItem.removeEventListener("click", controlMoreItem);
+
+        moreItem.removeAttribute("style");
+        moreItem.classList.remove("active");
+
+        // Menu
+        menu.removeAttribute("style");
+      }
+    });
+
+    // Menu, Close button
+    const menu = document.querySelector(".menu");
+    const menuBtn = document.querySelector(".menu-btn");
+    const closeBtn = document.querySelector(".close-btn");
+
+    menuBtn.addEventListener("click", () => {
+      menu.style.transform = "translateX(0)";
+      menu.style.transition = "transform 1s";
+
+      menuItems.forEach((menuItem) => {
+        menuItem.addEventListener("click", controlMenuItem);
+      });
+
+      moreItem.addEventListener("click", controlMoreItem);
+    });
+
+    closeBtn.addEventListener("click", () => {
+      menu.style.transform = "translateX(300px)";
+    });
+  </script>
+</html>

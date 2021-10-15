@@ -1,0 +1,196 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #23252d;
+  padding: 0 100px;
+  transition: 0.5s;
+}
+
+header .logo {
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.navigation .menu {
+  display: flex;
+  line-height: 60px;
+}
+
+.navigation .menu .menu-item > a {
+  color: white;
+  text-decoration: none;
+  margin: 25px;
+  padding: 20px 0px;
+  transition: 0.3s;
+}
+
+.navigation .menu .menu-item > a:hover {
+  color: #2e7ef8;
+}
+
+.menu-item .sub-menu {
+  position: absolute;
+  background: #23252d;
+  border-radius: 0 0 8px 8px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.menu-item:hover .sub-menu {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.menu-item .sub-menu .sub-item > a {
+  color: white;
+  text-decoration: none;
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.menu-item .sub-menu .sub-item:hover {
+  background: #2e7ef8;
+}
+
+.menu-item .sub-menu .sub-item:last-child:hover {
+  border-radius: 0 0 8px 8px;
+}
+
+.more {
+  position: relative;
+}
+
+.more .more-menu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background: #23252d;
+  white-space: nowrap;
+  border-radius: 0 8px 8px 8px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.more:hover .more-menu {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.more .more-menu .more-item > a {
+  color: white;
+  text-decoration: none;
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.more .more-menu .more-item:hover {
+  background: #2e7ef8;
+}
+
+.menu-btn {
+  display: none;
+}
+
+section {
+  background: url(bg.jpg) no-repeat;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 1060px) {
+  header {
+    padding: 15px 20px;
+  }
+
+  .navigation .menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: block;
+    height: 100vh;
+    background: #23252d;
+    padding: 60px 40px;
+    overflow: auto;
+    transform: translateX(300px);
+  }
+
+  .menu-item .sub-menu {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 1;
+    position: relative;
+    background: #444;
+    width: 80%;
+    text-align: center;
+    margin-left: 25px;
+    transition: max-height 1s;
+  }
+
+  .menu-item .sub-menu .sub-item:hover,
+  .more .more-menu .more-item:hover {
+    background: none;
+  }
+
+  .menu-item .sub-menu .sub-item a:hover,
+  .more .more-menu .more-item a:hover {
+    color: #2e7ef8;
+  }
+
+  .more .more-menu {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 1;
+    position: relative;
+    left: 0;
+    background: rgb(1 1 1 / 20%);
+    border-radius: 5px;
+    transition: max-height 1s;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(close.png) no-repeat;
+    width: 30px;
+    height: 30px;
+    background-size: 25px;
+    background-position: center;
+    margin: 20px;
+    cursor: pointer;
+  }
+
+  .menu-btn {
+    display: block;
+    background: url(menu.png) no-repeat;
+    width: 30px;
+    height: 30px;
+    background-size: 25px;
+    background-position: center;
+    cursor: pointer;
+  }
+
+  /* .more .more-menu .more-item:hover {
+    background: none;
+  }
+
+  .more .more-menu .more-item a:hover {
+    color: #2e7ef8;
+  } */
+}

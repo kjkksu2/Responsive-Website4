@@ -5,7 +5,7 @@
  2. removeEventListener를 사용하려면 임시함수를 사용하면 안된다.
 
 &emsp; ex) moreItem.addEventListener("click", controlMoreItem); -- OK<br/>
-&emsp;&emsp;   moreItem.addEventListener("click", () => { console.log("hi) }); -- NO
+&emsp;&emsp;   moreItem.addEventListener("click", () => { console.log("hi") }); -- NO
 
  3. removeAttribute
 
